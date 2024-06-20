@@ -2,6 +2,7 @@
   "name": "rabbitx-orderbook",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://gouthamt.github.io/rabbitx-orderbook",
   "dependencies": {
     "@storybook/addon-jest": "^8.1.10",
     "@testing-library/jest-dom": "^5.17.0",
@@ -20,6 +21,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -59,6 +62,7 @@
     "@storybook/react-webpack5": "^8.1.10",
     "@storybook/test": "^8.1.10",
     "eslint-plugin-storybook": "^0.8.0",
+    "gh-pages": "^6.1.1",
     "prop-types": "^15.8.1",
     "sans-serif": "^1.0.0",
     "storybook": "^8.1.10",
