@@ -22,7 +22,7 @@ export const Table = ({
   bids,
   marketInfo,
 }: TableProps) => {
-  const isMarketPriceUp = false;
+  const isMarketPriceUp = marketInfo ? marketInfo.marketPrice > marketInfo.lastMarketPrice : false;
   return (
     <table
       className="table"
