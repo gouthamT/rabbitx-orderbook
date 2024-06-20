@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.29863dc4.css",
-    "main.js": "/react-gh-pages/static/js/main.b04720cf.js",
-    "static/js/453.9b660e04.chunk.js": "/react-gh-pages/static/js/453.9b660e04.chunk.js",
-    "index.html": "/react-gh-pages/index.html",
-    "main.29863dc4.css.map": "/react-gh-pages/static/css/main.29863dc4.css.map",
-    "main.b04720cf.js.map": "/react-gh-pages/static/js/main.b04720cf.js.map",
-    "453.9b660e04.chunk.js.map": "/react-gh-pages/static/js/453.9b660e04.chunk.js.map"
+    "main.css": "/rabbitx-orderbook/static/css/main.29863dc4.css",
+    "main.js": "/rabbitx-orderbook/static/js/main.d01e2336.js",
+    "static/js/453.9b660e04.chunk.js": "/rabbitx-orderbook/static/js/453.9b660e04.chunk.js",
+    "index.html": "/rabbitx-orderbook/index.html",
+    "main.29863dc4.css.map": "/rabbitx-orderbook/static/css/main.29863dc4.css.map",
+    "main.d01e2336.js.map": "/rabbitx-orderbook/static/js/main.d01e2336.js.map",
+    "453.9b660e04.chunk.js.map": "/rabbitx-orderbook/static/js/453.9b660e04.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.29863dc4.css",
-    "static/js/main.b04720cf.js"
+    "static/js/main.d01e2336.js"
   ]
 }
