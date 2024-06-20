@@ -1,0 +1,53 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  color: rgb(130, 141, 164);
+  font-weight: 500;
+  font-size: 0.6875rem;
+  line-height: normal;
+  text-align: right;
+}
+
+.table th.table-price-header {
+  text-align: left;
+}
+
+.table th,
+.table td {
+  width: auto;
+  padding: 0.250rem;
+  font-size: 0.6875rem;
+}
+
+.last-trade-row td {
+  background: rgb(26, 34, 53);
+}
+
+.last-trade-row .last-trade-price {
+  transition: all 0.1s ease 0s;
+  font-weight: 550;
+  font-size: 1rem;
+  color: rgb(255, 71, 93);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+}
+
+.last-trade-row  .last-trade-price--up {
+  color: rgb(25, 234, 171);
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 0.75rem;
+  color: rgb(130, 141, 164);
+}

@@ -1,0 +1,27 @@
+.data-cell {
+  width: 100%;
+  text-align: left;
+  padding: 0.250rem;
+  font-size: 0.6875rem;
+  color: rgb(130, 141, 164);
+}
+
+.data-cell--ask {
+  color: rgb(204, 53, 72);
+}
+
+.data-cell--bid {
+  color: rgb(0, 153, 120);
+}
+
+.data-cell--amount {
+  text-align: right;
+}
+
+.data-cell--total {
+  text-align: right;
+}
+
+.data-cell--highlight {
+  border-radius: 0.25rem;
+}

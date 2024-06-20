@@ -1,0 +1,6 @@
+const CRYPTO_KEY = "BTC";
+const CURRENCY_KEY = "USD";
+const BRAND_NAME = "RabbitX";
+const MARKET_KEY = `${CRYPTO_KEY}-${CURRENCY_KEY}`;
+
+export { CRYPTO_KEY, CURRENCY_KEY, BRAND_NAME, MARKET_KEY };
