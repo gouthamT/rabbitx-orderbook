@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/rabbitx-orderbook/static/css/main.f4c17ec5.css",
-    "main.js": "/rabbitx-orderbook/static/js/main.aee5a8e7.js",
+    "main.js": "/rabbitx-orderbook/static/js/main.d6005891.js",
     "static/js/453.9b660e04.chunk.js": "/rabbitx-orderbook/static/js/453.9b660e04.chunk.js",
     "index.html": "/rabbitx-orderbook/index.html",
     "main.f4c17ec5.css.map": "/rabbitx-orderbook/static/css/main.f4c17ec5.css.map",
-    "main.aee5a8e7.js.map": "/rabbitx-orderbook/static/js/main.aee5a8e7.js.map",
+    "main.d6005891.js.map": "/rabbitx-orderbook/static/js/main.d6005891.js.map",
     "453.9b660e04.chunk.js.map": "/rabbitx-orderbook/static/js/453.9b660e04.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f4c17ec5.css",
-    "static/js/main.aee5a8e7.js"
+    "static/js/main.d6005891.js"
   ]
 }
