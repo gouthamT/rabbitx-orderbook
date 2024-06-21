@@ -32,13 +32,15 @@ The project is deployed on Github Pages. You can access the project using the fo
 [https://gouthamt.github.io/rabbitx-orderbook/](https://gouthamt.github.io/rabbitx-orderbook/)
 
 ### `To Do`
-1. Add unit tests for the components.
+1. Improve unit tests for the components.
 2. Add error boundary to catch the errors.
 3. Add lazy loading for the components.
 4. Add code splitting for the components.
 5. Add performance improvements.
 6. Add accessibility improvements.
 7. Add more features to the order book.
+8. Add themes and styles to the order book.
+9. Use Global css variables for the styles.
 
 ### `Assumptions`
 1. The order book is updated very frequently.

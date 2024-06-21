@@ -43,13 +43,7 @@ export const TableBody = ({ orderType, data }: TableProps) => {
             type="total"
             text={formatAmount(stockData.total)}
             orderType={orderType}
-            backgroundPercentage={
-              isAsk
-                ? Math.floor((stockData.total / data[0].total) * 100)
-                : Math.floor(
-                    (stockData.total / data[data.length - 1].total) * 100
-                  )
-            }
+            backgroundPercentage={stockData.percentageUpdated}
           />
         </tr>
       ))}

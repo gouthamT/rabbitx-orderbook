@@ -15,7 +15,7 @@ export const SwProvider = ({ children }: { children: React.ReactNode }) => {
       token,
     });
     centrifuge.on("error", function (ctx) {
-      console.log(ctx);
+      console.error(ctx);
     });
     setCentrifuge(centrifuge);
   };

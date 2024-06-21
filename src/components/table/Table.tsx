@@ -22,61 +22,66 @@ export const Table = ({
   bids,
   marketInfo,
 }: TableProps) => {
-  const isMarketPriceUp = marketInfo ? marketInfo.marketPrice > marketInfo.lastMarketPrice : false;
+  const isMarketPriceUp = marketInfo
+    ? marketInfo.marketPrice > marketInfo.lastMarketPrice
+    : false;
   return (
-    <table
-      className="table"
-      role="table"
-      aria-label="Orderbook table"
-      aria-rowcount={asks.length + bids.length}
-      data-testid="table"
-    >
-      <thead>
-        <tr role="row">
-          <th className="table-price-header" role="columnheader">
-            Price
-            <Pill label={currency} />
-          </th>
-          <th role="columnheader">
-            Amount
-            <Pill label={crypto} />
-          </th>
-          <th role="columnheader">
-            Total
-            <Pill label={currency} />
-          </th>
-        </tr>
-      </thead>
-      <TableBody orderType="ask" data={asks.slice().reverse()} />
+    <section className="table-container">
+      <h2 className="table-title">Orderbook</h2>
+      <table
+        className="table"
+        role="table"
+        aria-label="Orderbook table"
+        aria-rowcount={asks.length + bids.length}
+        data-testid="table"
+      >
+        <thead>
+          <tr role="row">
+            <th className="table-price-header" role="columnheader">
+              Price
+              <Pill label={currency} />
+            </th>
+            <th role="columnheader">
+              Amount
+              <Pill label={crypto} />
+            </th>
+            <th role="columnheader">
+              Total
+              <Pill label={currency} />
+            </th>
+          </tr>
+        </thead>
+        <TableBody orderType="ask" data={asks.slice().reverse()} />
 
-      <tbody>
-        <tr className="last-trade-row">
-          <td
-            role="cell"
-            className={classNames("last-trade-price", {
-              "last-trade-price--up": isMarketPriceUp,
-            })}
-            colSpan={3}
-            aria-label="Last trade price"
-            data-testid="last-trade-price"
-          >
-            {marketInfo ? (
-              <>
-                <span>{isMarketPriceUp ? <UpIcon /> : <DownIcon />}</span>
-                {formatPrice(marketInfo.marketPrice)}
-              </>
-            ) : (
-              <span data-testid="loading" className="loading">
-                Loading...
-              </span>
-            )}
-          </td>
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
+        <tbody>
+          <tr className="last-trade-row">
+            <td
+              role="cell"
+              className={classNames("last-trade-price", {
+                "last-trade-price--up": isMarketPriceUp,
+              })}
+              colSpan={3}
+              aria-label="Last trade price"
+              data-testid="last-trade-price"
+            >
+              {marketInfo ? (
+                <>
+                  <span>{isMarketPriceUp ? <UpIcon /> : <DownIcon />}</span>
+                  {formatPrice(marketInfo.marketPrice)}
+                </>
+              ) : (
+                <span data-testid="loading" className="loading">
+                  Loading...
+                </span>
+              )}
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
 
-      <TableBody orderType="bid" data={bids} />
-    </table>
+        <TableBody orderType="bid" data={bids} />
+      </table>
+    </section>
   );
 };

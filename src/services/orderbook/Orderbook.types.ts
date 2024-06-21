@@ -1,6 +1,6 @@
 import { PublicationContext } from "centrifuge";
 
-type Stock = [price: string, size: string];
+export type Stock = [price: string, size: string];
 
 export type Stocks = Stock[];
 
@@ -21,12 +21,13 @@ export interface EnrichedStock {
   price: number;
   size: number;
   total: number;
+  percentageUpdated: number;
 }
 
 export type EnrichedStocks = EnrichedStock[];
 
 export interface OrderbookState {
-  hasValidSequence: boolean;
+  hasValidSequence?: boolean;
   sequence: number;
   currency: string;
   crypto: string;

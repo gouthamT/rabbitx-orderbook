@@ -18,8 +18,5 @@
   font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  background: #101624;
+  box-sizing: border-box;
 }

@@ -1,3 +1,19 @@
+.table-container {
+  display: flex;
+  flex-direction: column;
+  background: rgb(16, 22, 36);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.table-title {
+  color: white;
+  font-size: 1rem;
+  margin: 0 0 1rem 0;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -6,7 +22,7 @@
 .table th {
   color: rgb(130, 141, 164);
   font-weight: 500;
-  font-size: 0.6875rem;
+  font-size: 0.875rem;
   line-height: normal;
   text-align: right;
 }
@@ -19,7 +35,7 @@
 .table td {
   width: auto;
   padding: 0.250rem;
-  font-size: 0.6875rem;
+  font-size: 0.875rem;
 }
 
 .last-trade-row td {
@@ -39,7 +55,7 @@
   padding: 0.5rem;
 }
 
-.last-trade-row  .last-trade-price--up {
+.last-trade-row .last-trade-price--up {
   color: rgb(25, 234, 171);
 }
 

@@ -4,22 +4,50 @@ import {
   Stocks,
   EnrichedStocks,
   OrderbookState,
+  EnrichedStock,
+  Stock,
 } from "./Orderbook.types";
 
+const getPercentageUpdated = (
+  currentTotal: number,
+  lastTotal: number
+): number => {
+  return Math.floor((currentTotal / lastTotal) * 100);
+};
+
 const mapsToEnrichedStocks = (
-  stocks: Stocks,
-  prevTotal: number = 0
+  stocks: (Stock | EnrichedStock)[]
 ): EnrichedStocks => {
-  return stocks.reduce((acc, [price, size], idx) => {
-    const sizeNumber = parseFloat(size);
-    const total =
-      idx === 0 ? prevTotal + sizeNumber : acc[idx - 1].total + sizeNumber;
+  return stocks.reduce((acc, stock, idx) => {
+    const normalizedStock = Array.isArray(stock)
+      ? {
+          price: parseFloat(stock[0]),
+          size: parseFloat(stock[1]),
+        }
+      : {
+          ...stock,
+          price: stock.price,
+          size: stock.size,
+        };
+    const total = (acc[idx - 1]?.total ?? 0) + normalizedStock.size;
     acc.push({
       id: Math.random(),
-      price: parseFloat(price),
-      size: sizeNumber,
+      price: normalizedStock.price,
+      size: normalizedStock.size,
       total,
+      percentageUpdated: 0,
     });
+
+    if (idx === stocks.length - 1) {
+      acc.map((stock) => {
+        stock.percentageUpdated = getPercentageUpdated(
+          stock.total,
+          acc[acc.length - 1].total
+        );
+        return stock;
+      });
+    }
+
     return acc;
   }, [] as EnrichedStocks);
 };
@@ -36,19 +64,17 @@ const computeStocks = (
 
   if (filteredNewStocks.length === 0) return oldStocks;
 
-  const lastOldStock = oldStocks[oldStocks.length - 1];
   const enrichedNewStocks = mapsToEnrichedStocks(
-    filteredNewStocks,
-    lastOldStock.total
+    [...oldStocks, ...filteredNewStocks].slice(-11)
   );
-  return oldStocks.concat(enrichedNewStocks).slice(-11);
+  return enrichedNewStocks;
 };
 
-const isValidSequence = (
+export const isValidSequence = (
   oldOrderbook: OrderbookState | null,
   newOrderbook: OrderbookData
 ): boolean => {
-  if (!oldOrderbook?.sequence) return true;
+  if (oldOrderbook?.sequence === undefined) return true;
   return newOrderbook.sequence - oldOrderbook.sequence === 1;
 };
 
