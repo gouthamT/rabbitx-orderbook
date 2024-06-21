@@ -39,11 +39,11 @@ export const Table = ({
           <tr role="row">
             <th className="table-price-header" role="columnheader">
               Price
-              <Pill label={currency} />
+              <Pill label={crypto} />
             </th>
             <th role="columnheader">
               Amount
-              <Pill label={crypto} />
+              <Pill label={currency} />
             </th>
             <th role="columnheader">
               Total
