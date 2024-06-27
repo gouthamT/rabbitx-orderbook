@@ -100,6 +100,30 @@ export const mergeOrderbook = (
   };
 };
 
+// create a hoc fn which will accept multiple requests and process them after 50 milli second
+const processMultipleOrderbookResponses = (
+  fn: Function,
+  callback: Function
+) => {
+  let timeout: NodeJS.Timeout;
+  let requests: any[] = [];
+  let lastResponse: any;
+
+  return (...args: any[]) => {
+    requests.push(args);
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      console.log("Processing multiple requests", requests.length);
+      requests.forEach((request: any, idx: number) => {
+        lastResponse = fn(idx === 0 ? request[0] : lastResponse, request[1]);
+      });
+      callback(lastResponse);
+      requests = [];
+      lastResponse = null;
+    }, 50);
+  };
+};
+
 // since we are using the real-time subscription, we need to merge the new data
 // some times there would be multiple requests with the same sequence number
 // we need to ignore those requests
@@ -116,19 +140,31 @@ export const useOrderbook = () => {
   const [orderbook, setOrderbook] = useState<OrderbookState | null>(null);
   const orderbookRef = useRef<OrderbookState | null>(null);
 
-  const mergeOrderbookMemoized = useMemo(() => mergeOrderbook, []);
+  const onProcessMultipleOrderbookResponses = (
+    response: OrderbookState | null
+  ) => {
+    setOrderbook(response);
+    orderbookRef.current = response;
+  };
+
+  const mergeOrderbookMemoized = useMemo(
+    () =>
+      processMultipleOrderbookResponses(
+        mergeOrderbook,
+        onProcessMultipleOrderbookResponses
+      ),
+    []
+  );
 
   const updateOrderbook = useCallback(
     (ctx: OrderbookData) => {
-      orderbookRef.current = mergeOrderbookMemoized(orderbookRef.current, ctx);
-      setOrderbook(orderbookRef.current);
+      mergeOrderbookMemoized(orderbookRef.current, ctx);
     },
     [mergeOrderbookMemoized]
   );
 
   const resetOrderbook = useCallback(() => {
-    orderbookRef.current = null;
-    setOrderbook(null);
+    onProcessMultipleOrderbookResponses(null);
   }, []);
 
   return { orderbook, updateOrderbook, resetOrderbook };
